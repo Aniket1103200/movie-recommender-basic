@@ -1,36 +1,29 @@
-# movie-recommendation-system
-A basic movie recommendation system developed with Python and pandas, focusing on providing movie suggestions based on similarity to a selected movie. This is a foundational implementation of recommender systems, useful for those interested in exploring how similar items can be recommended based on shared features.
+# Movie Recommender (Item-Based)
 
-# Movie Recommendation System
+Recommends movies that are **similar to a chosen movie**, based on how users rated them.
 
-Welcome to the Movie Recommendation System! This project utilizes Python and pandas to create a basic movie recommendation system. It suggests movies that are most similar to a chosen movie, based on features like genre, actors, and user ratings. This project serves as a foundational example of recommendation systems, focusing on similarity-based item recommendations.
+> 📚 **Course project:** completed while following the Udemy course *Python for Data Science and Machine Learning Bootcamp* (Pierian Data). The dataset and task come from the course.
 
-## Project Overview
+## Data
+- `u.data`: user ratings (user id, movie id, rating, timestamp)
+- `Movie_Id_Titles`: movie id → title
 
-In this project, we implemented a simple recommendation system that provides suggestions based on item similarity. Although not a comprehensive recommendation engine, this system is an excellent introduction to recommender algorithms and data manipulation techniques in Python.
+## Approach
+1. Merged ratings with movie titles and calculated the average rating and number of ratings per movie
+2. Built a **user × movie rating matrix** (pandas `pivot_table`)
+3. Found similar movies by **correlating rating vectors** (`corrwith`)
+4. Filtered out movies with too few ratings, so the recommendations are reliable
 
-## Key Features
+## Possible next steps
+Collaborative filtering with matrix factorization (e.g. SVD), and evaluation with a held-out test set.
 
-- **Similarity-based Recommendations**: Recommends movies similar to a selected movie.
-- **Data Analysis**: Leverages pandas for data processing and manipulation.
-- **Basic Recommender Foundation**: Serves as a baseline for understanding recommendation system concepts.
+## Tech
+Python · pandas · NumPy · Matplotlib · Seaborn · Jupyter
 
-## Installation and Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/GovindaTak/movie-recommendation-system.git
-   cd movie-recommendation-system
-2.Install the required dependencies:
-
+## Run it
+```bash
+git clone https://github.com/Aniket1103200/movie-recommender-basic.git
+cd movie-recommender-basic
 pip install -r requirements.txt
-3.Run the notebook:
-Open Movie Recommendation System.ipynb in Jupyter Notebook or Jupyter Lab to explore the code.
-
-## Usage
-The recommendation system provides movie suggestions by comparing the selected movie to others in the dataset. Simply select a movie, and the system will return similar movie recommendations.
-
-## Future Enhancements
-Adding advanced recommendation algorithms, such as collaborative filtering and matrix factorization.
-Integrating a more extensive dataset for improved recommendations.
-
+jupyter notebook movie_recommender.ipynb
+```
